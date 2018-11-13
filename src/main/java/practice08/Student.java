@@ -1,10 +1,10 @@
 package practice08;
 
-public class Student extends Person{
+public class Student extends Person {
     Klass klass;
 
-    public Student(String name, int age, Klass klass) {
-        super(name, age);
+    public Student(int id, String name, int age, Klass klass) {
+        super(id, name, age);
         this.klass = klass;
     }
 
@@ -12,7 +12,11 @@ public class Student extends Person{
         return klass;
     }
 
-    public String introduce(){
-        return String.format(super.introduce()+" I am a Student. I am at "+getKlass().getDisplayName() +".");
+    public String introduce() {
+        if (klass.leader == this) {
+            return String.format(super.introduce() + " I am a Student. I am Leader of " + getKlass().getDisplayName() + ".");
+        } else {
+            return String.format(super.introduce() + " I am a Student. I am at " + getKlass().getDisplayName() + ".");
+        }
     }
 }
